@@ -151,7 +151,7 @@ body {
 }
 
 .stars-mid {
-  top: calc(222 * var(--u));
+  top: calc(276 * var(--u));
   left: calc(-116 * var(--u));
   width: calc(274 * var(--u));
   height: auto;
@@ -164,6 +164,7 @@ body {
   width: calc(210 * var(--u));
   height: auto;
   opacity: 0.95;
+  z-index: 5;
 }
 
 /* ---------- selfie photo + badge ---------- */

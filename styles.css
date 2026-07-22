@@ -37,7 +37,7 @@ body {
 .frame {
   position: relative;
   width: calc(402 * var(--u));
-  height: calc(999 * var(--u));
+  height: calc(1020 * var(--u));
   overflow: hidden;
   background: var(--pink);
   isolation: isolate;
@@ -58,11 +58,11 @@ body {
 .bg-cream {
   position: absolute;
   top: calc(799.5 * var(--u));
-  left: calc(-81 * var(--u));
-  width: calc(362.5 * var(--u) + 200 * var(--u));
+  left: calc(20 * var(--u));
+  right: calc(20 * var(--u));
   height: calc(144.5 * var(--u));
   background: var(--cream);
-  z-index: 2;
+  z-index: 4;
 }
 
 /* ---------- top green section ---------- */
@@ -151,7 +151,7 @@ body {
 }
 
 .stars-mid {
-  top: calc(357 * var(--u));
+  top: calc(222 * var(--u));
   left: calc(-116 * var(--u));
   width: calc(274 * var(--u));
   height: auto;
@@ -174,7 +174,7 @@ body {
   left: calc(8 * var(--u));
   width: calc(207 * var(--u));
   height: auto;
-  z-index: 4;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -263,26 +263,38 @@ body {
 
 .cta {
   position: absolute;
-  top: calc(860 * var(--u));
+  top: calc(858 * var(--u));
   left: calc(32 * var(--u));
   padding: calc(4 * var(--u)) calc(8 * var(--u));
   font-family: "Archivo", sans-serif;
   font-weight: 800;
   font-size: calc(20.5 * var(--u));
-  line-height: 1.1;
+  line-height: 1;
   color: var(--pink);
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 0;
   z-index: 8;
   cursor: pointer;
-  transition: color 200ms ease, transform 200ms ease, text-shadow 200ms ease;
-  display: inline-block;
+  transition: color 200ms ease, transform 200ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(6 * var(--u));
   -webkit-tap-highlight-color: transparent;
 }
 
-.cta .arrow {
+.cta .cta-text {
   display: inline-block;
+  line-height: 1;
+}
+
+.cta .arrow {
+  width: 0.95em;
+  height: 0.78em;
+  flex-shrink: 0;
+  display: inline-block;
+  color: currentColor;
+  overflow: visible;
   transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -322,7 +334,7 @@ body {
 
 .note {
   position: absolute;
-  top: calc(920 * var(--u));
+  top: calc(898 * var(--u));
   left: calc(41 * var(--u));
   width: calc(220 * var(--u));
   font-family: "Archivo", sans-serif;

@@ -1,0 +1,355 @@
+:root {
+  /* 1 unit = 1 logical mobile pixel at 402px viewport.
+     Scales fluidly with viewport width up to a 500px cap so it looks
+     right on iPhone 16 Pro (393), iPhone 17 Pro (402), and desktop. */
+  --u: min(calc(100vw / 402), 1.244px);
+
+  --pink: #ff3d8f;
+  --pink-light: #ff6da5;
+  --green: #b2e8c4;
+  --cream: #fffce7;
+  --ink: #000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background: var(--pink);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Archivo", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+.frame {
+  position: relative;
+  width: calc(402 * var(--u));
+  height: calc(999 * var(--u));
+  overflow: hidden;
+  background: var(--pink);
+  isolation: isolate;
+}
+
+/* ---------- background layers ---------- */
+
+.bg-green {
+  position: absolute;
+  top: calc(-17 * var(--u));
+  left: calc(-17.5 * var(--u));
+  width: calc(479 * var(--u));
+  height: calc(472.5 * var(--u));
+  background: var(--green);
+  z-index: 1;
+}
+
+.bg-cream {
+  position: absolute;
+  top: calc(799.5 * var(--u));
+  left: calc(-81 * var(--u));
+  width: calc(362.5 * var(--u) + 200 * var(--u));
+  height: calc(144.5 * var(--u));
+  background: var(--cream);
+  z-index: 2;
+}
+
+/* ---------- top green section ---------- */
+
+.cake {
+  position: absolute;
+  top: calc(127 * var(--u));
+  left: calc(190 * var(--u));
+  width: calc(212 * var(--u));
+  height: auto;
+  z-index: 3;
+  filter: drop-shadow(0 calc(4 * var(--u)) calc(10 * var(--u)) rgba(0, 0, 0, 0.08));
+  pointer-events: none;
+}
+
+.title {
+  position: absolute;
+  top: calc(43 * var(--u));
+  left: calc(33.5 * var(--u));
+  width: calc(328 * var(--u));
+  font-family: "Archivo", sans-serif;
+  font-weight: 400;
+  font-size: calc(36 * var(--u));
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--ink);
+  z-index: 4;
+}
+
+.paren {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+  white-space: nowrap;
+}
+
+.rotor {
+  display: inline-block;
+  width: calc(33 * var(--u));
+  height: calc(41 * var(--u));
+  vertical-align: middle;
+  margin: 0 calc(1 * var(--u));
+  animation: rotor-spin 5s linear infinite;
+  will-change: transform;
+  object-fit: contain;
+}
+
+@keyframes rotor-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.subtitle {
+  position: absolute;
+  top: calc(204 * var(--u));
+  left: calc(36 * var(--u));
+  width: calc(180 * var(--u));
+  font-family: "Archivo", sans-serif;
+  font-weight: 400;
+  font-size: calc(13.4 * var(--u));
+  line-height: 1.2;
+  color: var(--ink);
+  z-index: 4;
+}
+
+/* ---------- middle transition ---------- */
+
+.scroll {
+  position: absolute;
+  top: calc(429.5 * var(--u));
+  left: calc(145.5 * var(--u));
+  width: calc(226.5 * var(--u));
+  font-family: "Archivo", sans-serif;
+  font-weight: 400;
+  font-size: calc(11.5 * var(--u));
+  color: var(--pink);
+  text-align: right;
+  z-index: 5;
+}
+
+.stars {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stars-mid {
+  top: calc(357 * var(--u));
+  left: calc(-116 * var(--u));
+  width: calc(274 * var(--u));
+  height: auto;
+  opacity: 0.95;
+}
+
+.stars-bot {
+  top: calc(705 * var(--u));
+  left: calc(262 * var(--u));
+  width: calc(210 * var(--u));
+  height: auto;
+  opacity: 0.95;
+}
+
+/* ---------- selfie photo + badge ---------- */
+
+.selfie {
+  position: absolute;
+  top: calc(432 * var(--u));
+  left: calc(8 * var(--u));
+  width: calc(207 * var(--u));
+  height: auto;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.badge {
+  position: absolute;
+  top: calc(577 * var(--u));
+  left: calc(240 * var(--u));
+  padding: calc(6 * var(--u)) calc(10 * var(--u));
+  background: var(--cream);
+  color: #000;
+  font-family: "Archivo", sans-serif;
+  font-weight: 400;
+  font-size: calc(11 * var(--u));
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transform: rotate(5deg);
+  transform-origin: center;
+  border-radius: calc(3 * var(--u));
+  box-shadow: 0 calc(2 * var(--u)) calc(6 * var(--u)) rgba(0, 0, 0, 0.08);
+  z-index: 6;
+  white-space: nowrap;
+}
+
+.stroke {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.stroke-5 {
+  top: calc(553 * var(--u));
+  left: calc(175 * var(--u));
+  width: calc(95 * var(--u));
+  height: auto;
+}
+
+.stroke-6 {
+  top: calc(547 * var(--u));
+  left: calc(171 * var(--u));
+  width: calc(16 * var(--u));
+  height: auto;
+}
+
+/* ---------- decorative dots ---------- */
+
+.dot {
+  position: absolute;
+  width: calc(23 * var(--u));
+  height: calc(23 * var(--u));
+  border-radius: 50%;
+  background: var(--cream);
+  opacity: 0.25;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.d1  { top: calc(542 * var(--u));   left: calc(250 * var(--u)); }
+.d2  { top: calc(507 * var(--u));   left: calc(331 * var(--u)); }
+.d3  { top: calc(614 * var(--u));   left: calc(331 * var(--u)); }
+.d4  { top: calc(614 * var(--u));   left: calc(205 * var(--u)); }
+.d5  { top: calc(666 * var(--u));   left: calc(238 * var(--u)); }
+.d6  { top: calc(519 * var(--u));   left: calc(182 * var(--u)); }
+.d7  { top: calc(716 * var(--u));   left: calc(354 * var(--u)); }
+.d8  { top: calc(761 * var(--u));   left: calc(171 * var(--u)); }
+.d9  { top: calc(498 * var(--u));   left: calc(23 * var(--u));  }
+.d10 { top: calc(666 * var(--u));   left: calc(56 * var(--u));  }
+.d11 { top: calc(727 * var(--u));   left: calc(-11 * var(--u)); }
+.d12 { top: calc(764 * var(--u));   left: calc(292 * var(--u)); }
+
+/* ---------- bottom cream band content ---------- */
+
+.description {
+  position: absolute;
+  top: calc(820 * var(--u));
+  left: calc(41 * var(--u));
+  width: calc(197 * var(--u));
+  font-family: "Archivo", sans-serif;
+  font-weight: 400;
+  font-size: calc(10.9 * var(--u));
+  line-height: 1.2;
+  color: var(--ink);
+  z-index: 7;
+}
+
+.cta {
+  position: absolute;
+  top: calc(860 * var(--u));
+  left: calc(32 * var(--u));
+  padding: calc(4 * var(--u)) calc(8 * var(--u));
+  font-family: "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: calc(20.5 * var(--u));
+  line-height: 1.1;
+  color: var(--pink);
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0;
+  z-index: 8;
+  cursor: pointer;
+  transition: color 200ms ease, transform 200ms ease, text-shadow 200ms ease;
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cta .arrow {
+  display: inline-block;
+  transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.cta::after {
+  content: "";
+  position: absolute;
+  left: calc(8 * var(--u));
+  right: calc(8 * var(--u));
+  bottom: calc(2 * var(--u));
+  height: calc(3 * var(--u));
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  border-radius: calc(2 * var(--u));
+}
+
+.cta:hover,
+.cta:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+
+.cta:hover .arrow,
+.cta:focus-visible .arrow {
+  transform: translateX(calc(6 * var(--u)));
+}
+
+.cta:hover::after,
+.cta:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.cta:active {
+  transform: scale(0.98);
+}
+
+.note {
+  position: absolute;
+  top: calc(920 * var(--u));
+  left: calc(41 * var(--u));
+  width: calc(220 * var(--u));
+  font-family: "Archivo", sans-serif;
+  font-weight: 400;
+  font-size: calc(10.9 * var(--u));
+  line-height: 1.2;
+  color: var(--pink-light);
+  z-index: 7;
+}
+
+/* ---------- desktop niceties ---------- */
+
+@media (min-width: 501px) {
+  body {
+    padding: calc(24 * var(--u)) 0;
+    align-items: flex-start;
+  }
+  .frame {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    border-radius: calc(28 * var(--u));
+  }
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rotor { animation: none; }
+  .cta,
+  .cta .arrow,
+  .cta::after { transition: none; }
+}

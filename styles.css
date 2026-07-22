@@ -230,7 +230,7 @@ body {
   border-radius: 50%;
   background: var(--cream);
   opacity: 0.25;
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
 }
 
